@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Vuex from './vuex3333'
+import Vuex from './vuex'
 
 Vue.use(Vuex)
 

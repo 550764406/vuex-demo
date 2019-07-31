@@ -66,7 +66,7 @@ const installMoudle = (store, state, path, rootModule)=>{
     }
 
     forEach(rootModule._children,(name,value)=>{
-        installMoudle(store,state,path.concat(name),val);
+        installMoudle(store,state,path.concat(name),value);
     })
 
 }
@@ -114,12 +114,12 @@ class Store{
     }
     //处理action 的dispatch
     dispatch = (type, payload)=>{
-        this.actions[type](payload);
+        this.actions[type].forEach(fn=>fn(this, payload));
     }
 
     commit = (type, payload) =>{ //提交找到对应的action执行
         console.log('committ=================>',type,payload)
-        this.mutations[type](payload);
+        this.mutations[type].forEach(fn=>fn(this.modules.root.state, payload))
     }
 
     get state(){ //调用store.state时默认调用这个方法，这个和Object.defineProperty 一样
