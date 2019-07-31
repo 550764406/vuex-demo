@@ -142,7 +142,7 @@ const install = (_Vue)=>{ //install 默认会被执行
             }
         }
     })
-}
+} 
 export default{
     Store,
     install
