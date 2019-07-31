@@ -1,31 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+     hello <span>{{this.$store.state.age}}</span><br />
+    我的年龄 {{ this.$store.getters.myAge}}
+    <button @click="add">同步增加10岁</button>
+    <button @click="minus">异步减少10岁</button>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+    name: 'app',
+    mounted(){
+        console.log('app=====>',this.$store)
+    },
+    methods: {
+        //同步增加用commit
+        add(){
+          this.$store.commit('syncAdd',10)
+        },
+        // 异步减少用dispatch
+        minus(){
+            this.$store.dispatch('ayncMinus',10)
+        }
+    }
 }
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>

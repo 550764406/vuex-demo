@@ -7,6 +7,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
-  store,
+  store, //给每个根组件
   render: h => h(App)
 }).$mount('#app')
