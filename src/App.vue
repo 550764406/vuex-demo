@@ -28,7 +28,7 @@ export default {
     data(){
       return {
           scholl: {
-              name: "珠峰",
+              name: "多多",
               age: 10
           }
       }
