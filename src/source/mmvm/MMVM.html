@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    11111
+    <!--=======================MMVM-start==========================-->
+        <input type="text" v-model="scholl.name" />
+        <ul>
+            <li>{{scholl.name}}</li>
+            <li>{{scholl.age}}</li>
+        </ul>
+        <button v-on:click="change" value="1111">点击更新姓名</button>
+        {{getNewName}}
+        <!--
+            数据不更新 视图就不会刷新
+            我们会在内部匹配 {{}}
+        -->
+
+        <div v-html="msg"></div>
+
+    <!--=======================MMVM-over==========================-->
+</div>
+
+<!--<script type="text/javascript" src="../../../node_modules/vue/dist/vue.js"></script>-->
+<script type="text/javascript" src="mmvm.js"></script>
+<script>
+let vm = new Vue({
+    el: '#app',
+    data:{
+        scholl:{
+            name: "多多",
+            age: 20
+        },
+        msg: '<h1>欢迎大家</h1>'
+    },
+    computed:{
+        getNewName(){
+            return this.scholl.name + '架构';
+        }
+    },
+    methods:{
+        change(){
+            this.scholl.name  = "哈哈";
+        }
+    }
+})
+console.log(vm)
+</script>
+</body>
+</html>

@@ -1,15 +1,38 @@
 <template>
   <div id="app">
-     hello <span>{{this.$store.state.age}}</span><br />
-    我的年龄 {{ this.$store.getters.myAge}}
-    <button @click="add">同步增加10岁</button>
-    <button @click="minus">异步减少10岁</button>
+    <!--=======================vuex-start==========================-->
+    <div class="marB20">
+      <span>{{this.$store.state.age}}</span><br />
+      我的年龄 {{ this.$store.getters.myAge}}
+      <button @click="add">同步增加10岁</button>
+      <button @click="minus">异步减少10岁</button>
+    </div>
+    <!--=======================vuex-over==========================-->
+
+    <!--=======================MMVM-start==========================-->
+      <div class="marB20">
+        <input type="text" v-model="scholl.name" />
+        <ul>
+          <li>{{scholl.name}}</li>
+          <li>{{scholl.age}}</li>
+        </ul>
+
+      </div>
+    <!--=======================MMVM-over==========================-->
   </div>
 </template>
 
 <script>
 export default {
     name: 'app',
+    data(){
+      return {
+          scholl: {
+              name: "珠峰",
+              age: 10
+          }
+      }
+    },
     mounted(){
         console.log('app=====>',this.$store)
     },
@@ -25,3 +48,12 @@ export default {
     }
 }
 </script>
+
+<style>
+  body{
+    padding: 30px;
+  }
+  .marB20{
+    margin-bottom: 20px;
+  }
+</style>
