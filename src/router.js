@@ -8,10 +8,21 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    //ssr渲染测试用的
+    // {
+    //   path: '/',
+    //   name: 'foo',
+    //   component: () => import(/* webpackChunkName: "about" */ './components/Foo.vue')
+    // },
     {
-      path: '/',
-      name: 'home',
-      component: Home
+        path: '/',
+        name: 'home',
+        component: Home
+    },
+    {
+      path: '/bar',
+      name: 'bar',
+      component: () => import(/* webpackChunkName: "about" */ './components/Bar.vue')
     },
     {
       path: '/Main1',

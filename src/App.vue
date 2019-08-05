@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app"><!--客户端激活-->
     <!--=======================vuex-start==========================-->
     <div class="marB20">
       <span>{{this.$store.state.age}}</span><br />
@@ -19,11 +19,18 @@
 
       </div>
     <!--=======================MMVM-over==========================-->
+    <router-link to="/">foo</router-link>
+    <router-link to="/bar">bar</router-link>
     <router-view/>
+
+    <Bar />
+    <Foo></Foo>
   </div>
 </template>
 
 <script>
+  import Foo from './components/Foo.vue';
+  import Bar from './components/Bar.vue';
 export default {
     name: 'app',
     data(){
@@ -33,6 +40,9 @@ export default {
               age: 10
           }
       }
+    },
+    components:{
+      Bar, Foo
     },
     mounted(){
         console.log('app=====>',this.$store)
