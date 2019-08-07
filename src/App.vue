@@ -19,6 +19,11 @@
 
       </div>
     <!--=======================MMVM-over==========================-->
+    <input type="text" v-model="inputval" />
+    <div  v-html="inputval"></div>
+    <br>
+    {{inputval}}
+
     <router-view/>
   </div>
 </template>
@@ -31,7 +36,8 @@ export default {
           scholl: {
               name: "多多",
               age: 10
-          }
+          },
+          inputval:''
       }
     },
     mounted(){

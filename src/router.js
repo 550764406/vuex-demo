@@ -21,6 +21,11 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       // component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
       component: () => import(/* webpackChunkName: "about" */ './source/tree/Main1.vue')
+    },
+    {
+      path:'/parent',
+      name: 'parent',
+      component: ()=> import('./parent_to_child/parent.vue')
     }
   ]
 })

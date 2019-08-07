@@ -118,7 +118,6 @@ class Compiler{
 
     //核心的编译方法
     compile( node ){ //用来编译内存中的dom节点
-        console.log('this===========>',this)
         let childNodes = node.childNodes;
         [...childNodes].forEach(child=>{
             if(this.isElementNode(child)){

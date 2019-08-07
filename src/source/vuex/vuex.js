@@ -51,7 +51,7 @@ const installMoudle = (store, state, path, rootModule)=>{
     let mutations = rootModule._raw.mutations;
     if(mutations){
         forEach(mutations,(mutationName,fn)=>{
-            console.log('mutations===========>',mutations,mutationName)
+            // console.log('mutations===========>',mutations,mutationName)
             let arr = store.mutations[mutationName] || (store.mutations[mutationName] = [])
             arr.push(fn);
         })

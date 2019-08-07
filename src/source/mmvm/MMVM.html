@@ -22,11 +22,16 @@
 
         <div v-html="msg"></div>
 
+        <div>
+            <input type="text" v-model="scholl.name">
+            watch方法：{{ scholl.name }}
+        </div>
+
     <!--=======================MMVM-over==========================-->
 </div>
 
-<!--<script type="text/javascript" src="../../../node_modules/vue/dist/vue.js"></script>-->
-<script type="text/javascript" src="mmvm.js"></script>
+<script type="text/javascript" src="../../../node_modules/vue/dist/vue.js"></script>
+<!--<script type="text/javascript" src="mmvm.js"></script>-->
 <script>
 let vm = new Vue({
     el: '#app',
@@ -39,12 +44,19 @@ let vm = new Vue({
     },
     computed:{ //不支持异步
         getNewName(){
+            this.msg = '2222'
             return this.scholl.name + '架构';
         }
     },
     methods:{
         change(){
             this.scholl.name  = "哈哈";
+        }
+    },
+    watch:{
+        "scholl.name"(oldval,newval){
+            console.log('old===>',oldval)
+            console.log('newval===>',newval);
         }
     }
 })
