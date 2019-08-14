@@ -114,10 +114,12 @@ class Store{
     }
     //处理action 的dispatch
     dispatch = (type, payload)=>{
+        // this.actions[type](payload);
         this.actions[type].forEach(fn=>fn(this, payload));
     }
 
     commit = (type, payload) =>{ //提交找到对应的action执行
+        //this.mutations[type](payload);
         console.log('committ=================>',type,payload)
         this.mutations[type].forEach(fn=>fn(this.modules.root.state, payload))
     }
@@ -147,3 +149,18 @@ export default{
     Store,
     install
 };
+// vuex 原理：
+// 1、定义install方法，作用是防止vuex重复安装，然后混入一个this.$store方法，都能获取到this.$store方法
+// 2、定义个Store方法，这里包含state、mutation、actions、getters ，另外定义一个modules方法收集所有的模块，定义一个安装模块
+// 3、收集模块方法主要为了生成一个
+// let root = {
+//    _raw: rootModules,
+//    state: {age:10},
+//    getter:{},...
+//   _children:{
+//      _raw: aModule,
+//      _children: {}
+//    }
+// }
+// 4、这里的安装模块installMoudle函数，是通过参数的方式将getter、state、mutation、actions赋值
+// 5、然后在store里这里有调用的所有方法，根据不同的type类型进行调用，实现data更新操作
