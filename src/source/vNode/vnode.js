@@ -222,3 +222,7 @@ export function cloneVNodes (vnodes: Array<VNode>): Array<VNode> {
     }
     return res
 }
+
+//template模板编译
+//1、编译成render和renderStaticRender字符串模板，返回vnode节点
+// 2、生成AST语法树 通过optimze函数优化，通过generous函数返回上面的字符串模板

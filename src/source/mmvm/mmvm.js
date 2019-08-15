@@ -274,3 +274,14 @@ class Vue{
         }
     }
 }
+
+//原理：
+// 1、定义vue基类，这里包含data、methods、computed，
+// 2、将所有的这些都定义成Object.defineProperty的形式
+// 3、定义Compiler类来编译模板
+//    模板编译原理:
+//     a、将template模板通过parse(将模板中指令、class类、style等转化成AST语法数)
+//        【这里包含节点的一些描述，包含是否静态节点，渲染模式等】
+//     b、通过optimze进行优化(用来标记静态节点，diff算法会直接跳过静态节点，优化性能)
+//     c、通过generate得到render和staticRenderFns，最终得到render字符串和staticRenderFns字符串，返回vnode渲染节点
+// 4、将vm取值代理到vm.$data里
