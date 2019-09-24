@@ -25,6 +25,16 @@ yarn run test
 ### Lints and fixes files
 ```
 yarn run lint
+
+配置引用文件方法
+configureWebpack: {
+        resolve: {
+            alias: {
+                'vue$': 'vue/dist/vue.esm.js',
+                '@': resolve('src')
+            }
+        }
+     },
 ```
 ### vuex源码解析：http://localhost:8080/ store里的引入可以查看
 ### MMVM源码解析：http://localhost:8080/mmvm.html
